@@ -1,17 +1,12 @@
 name: Build and Deploy
-env:
-  CI: false
-  GITHUB_USERNAME: ${{ github.repository_owner }}
-  REACT_APP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically set by Github Actions
-  USE_GITHUB_DATA: "true"
-  MEDIUM_USERNAME: "saadpasta" # Change this to your medium username
 on:
   workflow_dispatch:
   push:
     branches:
       - master
-  schedule:
-    - cron: "0 12 * * 1" # see https://docs.github.com/en/actions/reference/events-that-trigger-workflows#scheduled-events
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -24,18 +19,17 @@ jobs:
       - name: Setup Node.js 🔧
         uses: actions/setup-node@v3.8.1
         with:
-          node-version: 18.x
-
-      - name: Update npm 🚀
-        run: npm install -g npm@latest
+          node-version: 22.x
 
       - name: Install and Build 🔧 # Build the Project
         run: |
-          npm install
+          npm ci
+          npm test
+          npm run lint
           npm run build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }} # This is provided by GitHub.
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
+          token: ${{ secrets.GITHUB_TOKEN }} # This is provided by GitHub.
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.

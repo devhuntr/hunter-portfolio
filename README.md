@@ -1,3 +1,19 @@
+# Hunter Anderson portfolio
+
+This repository is being modernized incrementally from developerFolio. See [MODERNIZATION_PLAN.md](MODERNIZATION_PLAN.md) for the assessment and [IMPLEMENTATION_LOG.md](IMPLEMENTATION_LOG.md) for completed checkpoints.
+
+## Current development
+
+Use Node 22.20 or newer within the Node 22 release line. Install dependencies with `npm ci`, run locally with `npm start`, test with `npm test`, and build with `npm run build`. Run `npm run lint` for source checks and `npm run preview` to inspect the production build. The development server uses port 3010; preview uses port 4173. Vite outputs `dist/` and uses relative asset paths for root or subpath hosting.
+
+Content and links live in `src/data/portfolio.ts`, with shared content types in `src/data/types.ts`. The existing `src/portfolio.js` entry point re-exports the data for sections still using JavaScript. Run `npm run typecheck` to check migrated TypeScript files; production builds include this check. Set `greeting.resumeLink` when the resume is ready; both resume links remain hidden until then. Contact is independent of GitHub data. Do not invent missing employment dates, project details, or certifications.
+
+GitHub pinned repositories are optional and disabled initially. To refresh them, copy `env.example` to `.env`, supply a build-only `GITHUB_TOKEN`, then run `npm run github:refresh`. Set `openSource.display` to true to show the saved data. The app still provides a GitHub link if the snapshot is missing. Normal development and builds never fetch external portfolio data. Generated `public/profile.json` is ignored; deployment needs its own explicit refresh step if this section is enabled.
+
+Twitter, Medium/blogs, talks, podcast, and percentage proficiency sections have been removed. The template resume and analytics ID have also been removed. The legacy instructions below describe the original template and are retained as upstream reference, not current setup instructions.
+
+## Upstream reference
+
 # Software Developer Folio ⚡️ [![GitHub](https://img.shields.io/github/license/saadpasta/developer-portfolio?color=blue)](https://github.com/saadpasta/developerFolio/blob/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/saadpasta/developerFolio)](https://github.com/saadpasta/developerFolio/stargazers)  [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
 ## A clean, beautiful and responsive portfolio template for Developers!

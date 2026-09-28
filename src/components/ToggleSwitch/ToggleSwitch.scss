@@ -8,7 +8,7 @@
 }
 
 /* Fix visible slider checkbox */
-input {
+.switch input {
   transform: scale(0.5);
 }
 
@@ -36,16 +36,17 @@ input {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+.switch input:checked + .slider {
   background-color: $toggleCheck;
 }
 
-input:focus + .slider {
-  box-shadow: $toggleCheck;
+.switch input:focus + .slider {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 
-input:checked + .slider::before,
-input:checked + .slider > .emoji {
+.switch input:checked + .slider::before,
+.switch input:checked + .slider > .emoji {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -71,7 +72,7 @@ input:checked + .slider > .emoji {
   bottom: 17.5%;
 }
 
-input:checked + .slider::after {
+.switch input:checked + .slider::after {
   display: inline;
   position: absolute;
   right: 56.3%;

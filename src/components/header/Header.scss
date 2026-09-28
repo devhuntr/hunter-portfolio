@@ -73,6 +73,7 @@
 .header .menu {
   clear: both;
   max-height: 0;
+  visibility: hidden;
   transition: max-height 0.2s ease-out;
 }
 
@@ -80,6 +81,8 @@
 
 .header .menu-icon {
   cursor: pointer;
+  border: 0;
+  background: transparent;
   display: inline-block;
   float: right;
   padding: 28px 20px;
@@ -130,31 +133,12 @@
   top: -5px;
 }
 
-/* menu btn */
-
-.header .menu-btn {
-  display: none;
+.header .menu-open {
+  max-height: 600px;
+  visibility: visible;
 }
-
-.header .menu-btn:checked ~ .menu {
-  max-height: 486px;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon {
-  background: transparent !important;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:before {
-  transform: rotate(-45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:after {
-  transform: rotate(45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-  top: 0;
+.header .theme-toggle {
+  padding: 15px 20px;
 }
 
 /* 48em = 768px */
@@ -170,6 +154,7 @@
   }
   .header .menu {
     max-height: none;
+    visibility: visible;
   }
   .header .menu-icon {
     display: none;

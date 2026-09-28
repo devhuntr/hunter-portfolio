@@ -9,7 +9,7 @@
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat"),
-    url("./assets/fonts/Montserrat-Regular.ttf") format("woff");
+    url("./assets/fonts/Montserrat-Regular.ttf") format("truetype");
   font-display: swap;
 }
 code {
@@ -30,7 +30,35 @@ body {
 @media (max-width: 1380px) {
   html,
   body {
-    font-size: rem;
+    font-size: 1rem;
     line-height: normal;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #8257c9;
+  outline-offset: 4px;
+}
+[id] {
+  scroll-margin-top: 110px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+  .wave-emoji {
+    animation: none;
+  }
+}
+
+.project-tag,
+.certificate-tag {
+  text-decoration: none;
 }
